@@ -11,11 +11,13 @@ function App() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          {tableData.users.map((user) => (
-            <td key={user.id}>{user.id}</td>
-          ))}
-        </tr>
+        {tableData.users.map((count) => (
+          <tr>
+            {tableData.users.map((user, infoIndex) => (
+              <td key={user.id}>{Object.values(count)[infoIndex + 1]}</td>
+            ))}
+          </tr>
+        ))}
       </tbody>
     </table>
   );
