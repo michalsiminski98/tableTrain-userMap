@@ -1,28 +1,56 @@
 import { tableData } from "./users";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [users, setUser] = useState(tableData.users);
+  const [titles] = useState(tableData.titles);
+
+  const handleDeleteUser = (id) => {
+    const newUsers = users.filter((user) => user.id !== id);
+    setUser(newUsers);
+  };
   const createTable = () => (
     <table>
       <thead>
         <tr>
-          {tableData.titles.map((title) => (
+          {titles.map((title) => (
             <th key={title}>{title}</th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {tableData.users.map((count) => (
-          <tr>
-            {tableData.users.map((user, infoIndex) => (
-              <td key={user.id}>{Object.values(count)[infoIndex + 1]}</td>
-            ))}
+        {users.map((user) => (
+          <tr key={user.id}>
+            {titles.map((title, infoIndex) =>
+              infoIndex !== 3 ? (
+                <td key={title[infoIndex]}>
+                  {Object.values(user)[infoIndex + 1]}
+                </td>
+              ) : (
+                <td key={title[infoIndex]}>
+                  <button onClick={() => handleDeleteUser(user.id)}>
+                    Delete
+                  </button>
+                </td>
+              )
+            )}
           </tr>
         ))}
       </tbody>
     </table>
   );
 
-  return <div className="App">{createTable()}</div>;
+  return (
+    <>
+      <nav></nav>
+      <main>
+        <div>{createTable()}</div>
+        <aside></aside>
+      </main>
+      <footer></footer>
+    </>
+  );
 }
 
 export default App;

@@ -24,6 +24,12 @@ export const tableData = {
       address: "Loty",
       age: 46,
     },
+    {
+      id: 4,
+      name: "ASDD",
+      address: "asdads",
+      age: 46,
+    },
   ],
-  titles: ["name", "address", "age"],
+  titles: ["name", "address", "age", "action"],
 };
