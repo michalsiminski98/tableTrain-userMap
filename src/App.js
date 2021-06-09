@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { tableData } from "./users";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const createTable = () => (
+    <table>
+      <thead>
+        <tr>
+          {tableData.titles.map((title) => (
+            <th key={title}>{title}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {tableData.users.map((user) => (
+            <td key={user.id}>{user.id}</td>
+          ))}
+        </tr>
+      </tbody>
+    </table>
   );
+
+  return <div className="App">{createTable()}</div>;
 }
 
 export default App;
