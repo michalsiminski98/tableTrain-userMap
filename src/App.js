@@ -45,7 +45,7 @@ function App() {
     <>
       <nav></nav>
       <main>
-        <div>{createTable()}</div>
+        <div className="tableWrapper">{createTable()}</div>
         <aside></aside>
       </main>
       <footer></footer>
